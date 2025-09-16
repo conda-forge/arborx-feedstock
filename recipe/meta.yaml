@@ -53,7 +53,7 @@ test:
 
   commands:
   # Lots more CMake files; just checking for one
-    - test -f $PREFIX/lib/cmake/ArborX/ArborXConfig.cmake  # [unix]
+    - test -f $PREFIX/share/cmake/ArborX/ArborXConfig.cmake  # [unix]
     - if not exist %STDLIB_DIR%\\cmake\\ArborX\\ArborXConfig.cmake exit 1  # [win]
   # There are lots more headers; only test for a few.
     - test -f $PREFIX/include/ArborX/ArborX.hpp  # [unix]
