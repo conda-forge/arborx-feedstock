@@ -1,5 +1,5 @@
 {% set name = "arborx" %}
-{% set version = "2.0" %}
+{% set version = "2.0.1" %}
 {% set cuda_major = environ.get("cuda_compiler_version", "0.0").split(".")[0]|int %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/arborx/ArborX/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5ea6d8f832a69aac77d66c1ae55f96c2ff227272b8a6ba694c7ebcdf3a2413d5
+  sha256: 9a831c5086a4fedf312fc88eec24e1382cac7520516aa56f743ef7769638ce37
   patches:
     - findcuda.patch  # [cuda_compiler_version != "None"]
 
@@ -23,7 +23,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
-    - cmake >=3.22,<4
+    - cmake >=3.30,<4
     - kokkos >=4.5.0
     - ninja
 
@@ -38,7 +38,7 @@ test:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
-    - cmake >=3.22
+    - cmake >=3.30
     - ninja
   # Will get nvcc linker warnings if the cudatoolkit version doesn't match
     - cuda-version {{ environ.get("cuda_compiler_version") }}.*  # [cuda_compiler_version != "None"]
