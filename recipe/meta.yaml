@@ -11,7 +11,7 @@ source:
   sha256: 7a8aa554304a31a598c357c0b5c8b562343c40a1336d716255e75e863a7d288c
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win and cuda_compiler_version != "None"]
   string: "cuda{{ cuda_major }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version != "None"]
   string: "h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}"  # [cuda_compiler_version == "None"]
@@ -22,8 +22,10 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cuda') }}  # [cuda_compiler_version != "None"]
     - cmake >=3.30,<4
-    - kokkos >=5.2.0
     - ninja
+
+  host:
+    - kokkos >=5.2.0
 
   run:
     - kokkos >=5.2.0
